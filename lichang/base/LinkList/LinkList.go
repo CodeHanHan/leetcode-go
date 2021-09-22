@@ -1,4 +1,4 @@
-package base
+package list
 
 import (
 	"bytes"
@@ -17,7 +17,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func BuildList(data []int) *ListNode {
+func BuildListWithHead(data []int) *ListNode {
 	head := &ListNode{
 		Val:  -1,
 		Next: nil,
@@ -33,9 +33,40 @@ func BuildList(data []int) *ListNode {
 	return head
 }
 
+func BuildListWithNoHead(nums []int) *ListNode {
+	if len(nums) < 1 {
+		return nil
+	}
+
+	head := &ListNode{
+		Val:  nums[0],
+		Next: nil,
+	}
+
+	for i := 1; i < len(nums); i++ {
+		insertToTail(head, nums[i])
+	}
+	return head
+}
+
+func insertToTail(head *ListNode, val int) *ListNode {
+	var cur *ListNode = head
+	for cur.Next != nil {
+		cur = cur.Next
+	}
+	cur.Next = &ListNode{
+		Val:  val,
+		Next: nil,
+	}
+	return head
+}
+
 func (l *ListNode) String() string {
 	ret := bytes.Buffer{}
-	p := l.Next
+	var p *ListNode = l
+	if l.Val < 0 {
+		p = l.Next
+	}
 	for p != nil {
 		ret.WriteString(fmt.Sprintf("%v → ", p.Val))
 		p = p.Next

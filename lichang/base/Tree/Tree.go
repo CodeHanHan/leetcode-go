@@ -1,4 +1,4 @@
-package base
+package tree
 
 type TreeNode struct {
 	Val   int
@@ -26,6 +26,24 @@ func (root *TreeNode) InOrder(Visit func(val int)) {
 	root.Left.InOrder(Visit)
 	Visit(root.Val)
 	root.Right.InOrder(Visit)
+}
+
+func (root *TreeNode) PreOrder(Visit func(val int)) {
+	if root == nil {
+		return
+	}
+	Visit(root.Val)
+	root.Left.PreOrder(Visit)
+	root.Right.PreOrder(Visit)
+}
+
+func (root *TreeNode) PostOrder(Visit func(val int)) {
+	if root == nil {
+		return
+	}
+	root.Left.PostOrder(Visit)
+	root.Right.PostOrder(Visit)
+	Visit(root.Val)
 }
 
 func indexOf(order []int, val int) int {
