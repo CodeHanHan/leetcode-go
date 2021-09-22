@@ -11,9 +11,15 @@
 ```
 输入：[2,2,2,0,1]
 输出：0
-```
+``` 
 
 ## 3. 解题
 最容易想到的方法是从头开始遍历，找到最小值即可，时间复杂度为O(n)  
 除此之外，可利用其有序特性，使用二分查找法，
 当某一个元素的前一个值比它大，则最小值即为当前元素
+
+设low = 0, high = len(nums) - 1, mid = low + (high - low) / 2
+有：
+  1. 若nums[mid] < nums[high], 则min在左侧，令high = mid
+  2. 若nums[mid] > nums[high], 则min在右侧，令low = mid + 1
+  3. 若nums[mid] == nums[high], 则higt = high - 1

@@ -1,6 +1,9 @@
 package offer25
 
-import "fmt"
+import (
+	"bytes"
+	"fmt"
+)
 
 type ListNode struct {
 	Val  int
@@ -47,10 +50,16 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	return head.Next
 }
 
-func (head *ListNode) print() {
-	for head != nil {
-		fmt.Printf("%d->", head.Val)
-		head = head.Next
+func (l *ListNode) String() string {
+	ret := bytes.Buffer{}
+	var p *ListNode = l
+	if l.Val < 0 {
+		p = l.Next
 	}
-	fmt.Println()
+	for p != nil {
+		ret.WriteString(fmt.Sprintf("%v → ", p.Val))
+		p = p.Next
+	}
+	ret.WriteString("nil")
+	return ret.String()
 }

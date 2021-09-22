@@ -1,31 +1,38 @@
 package offer25
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+
+	"github.com/stretchr/testify/require"
+)
 
 func Test_mergeTwoLists(t *testing.T) {
-	head1 := &ListNode{
-		Val:  1,
+	require.Equal(t,
+		"1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → nil",
+		fmt.Sprintf("%s", mergeTwoLists(linklist1, linklist2)))
+
+	require.Equal(t,
+		"1 → 2 → 3 → nil",
+		fmt.Sprintf("%s", mergeTwoLists(buildList([]int{1, 2, 3}), buildList([]int{}))))
+}
+
+var linklist1 = buildList([]int{1, 3, 5, 7, 9})
+
+var linklist2 = buildList([]int{2, 4, 6, 8, 10})
+
+func buildList(nums []int) *ListNode {
+	if len(nums) < 1 {
+		return nil
+	}
+
+	head := &ListNode{
+		Val:  nums[0],
 		Next: nil,
 	}
-	//var head *ListNode
-	insertToTail(head1, 3)
-	insertToTail(head1, 4)
-	insertToTail(head1, 6)
-	insertToTail(head1, 8)
-	head1.print()
 
-	head2 := &ListNode{
-		Val:  2,
-		Next: nil,
+	for i := 1; i < len(nums); i++ {
+		insertToTail(head, nums[i])
 	}
-	//var head *ListNode
-	insertToTail(head2, 3)
-	insertToTail(head2, 5)
-	insertToTail(head2, 7)
-	insertToTail(head2, 9)
-	head2.print()
-
-	mergeTwoLists(head1, head2)
-	head1.print()
-
+	return head
 }

@@ -32,3 +32,14 @@ func insertToTail(head *ListNode, val int) *ListNode {
 	}
 	return head
 }
+
+func traverseList(head *ListNode) []int {
+	nums := make([]int, 0)
+
+	var p *ListNode = head
+	for p != nil {
+		nums = append(nums, p.Val)
+		p = p.Next
+	}
+	return nums
+}
