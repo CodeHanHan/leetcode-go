@@ -1,6 +1,10 @@
 package offer_60_m
 
-import "math"
+import (
+	"fmt"
+	"math"
+	"strconv"
+)
 
 func dicesProbability(n int) []float64 {
 	dp := make([][]int, n+1)
@@ -13,8 +17,8 @@ func dicesProbability(n int) []float64 {
 	}
 
 	for i := 2; i <= n; i++ {
-		for j := i; j <= i*6; j++ { // 翻译状态转移方程
-			for cur := 1; cur <= 6; cur++ {
+		for j := i; j <= i*6; j++ {
+			for cur := 1; cur <= 6; cur++ { // 翻译状态转移方程
 				if j-cur <= 0 {
 					break
 				}
@@ -26,7 +30,8 @@ func dicesProbability(n int) []float64 {
 	all := math.Pow(float64(6), float64(n))
 	res := make([]float64, 0)
 	for i := n; i <= 6*n; i++ {
-		res = append(res, float64(dp[n][i])/all)
+		r, _ := strconv.ParseFloat(fmt.Sprintf("%.5f", float64(dp[n][i])/all), 64)
+		res = append(res, r)
 	}
 
 	return res
@@ -55,7 +60,8 @@ func dicesProbability1(n int) []float64 {
 	all := math.Pow(float64(6), float64(n))
 	res := make([]float64, 0)
 	for i := n; i <= 6*n; i++ {
-		res = append(res, float64(dp[i])/all)
+		r, _ := strconv.ParseFloat(fmt.Sprintf("%.5f", float64(dp[i])/all), 64)
+		res = append(res, r)
 	}
 
 	return res
