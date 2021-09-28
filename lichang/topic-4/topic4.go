@@ -68,6 +68,73 @@ func findMedianSortedArrays_1(nums1 []int, nums2 []int) float64 {
 	return f
 }
 
-//TODO: 二分法
+// 二分法
+func findMedianSortedArrays_2(nums1 []int, nums2 []int) float64 {
+	m, n := len(nums1), len(nums2)
+	odd := (m+n)&1 == 0
+	if !odd {
+		return float64(kthSmallElement(nums1, nums2, (m+n)/2+1))
+	} else {
+		return float64(kthSmallElement(nums1, nums2, (m+n)/2)+kthSmallElement(nums1, nums2, (m+n)/2+1)) / 2
+	}
+}
+
+// getKthElement find Kth small element in combination of num1 and num2
+func kthSmallElement(num1, num2 []int, k int) int {
+	l1, l2 := num1, num2
+	var min1, min2 int   // 存储要比较的两个最小值
+	var step1, step2 int // 存储要截断的长度
+
+	for {
+		if len(l1) == 0 {
+			return l2[k-1]
+		}
+		if len(l2) == 0 {
+			return l1[k-1]
+		}
+
+		if k == 1 {
+			return min(l1[0], l2[0])
+		}
+		half := k / 2
+
+		// if len(l1)-1 < half-1 { // 如果l1下标将要越界
+		// 	min1 = l1[len(l1)-1]
+		// 	step1 = len(l1)
+		// } else {
+		// 	min1 = l1[half-1]
+		// 	step1 = half
+		// }
+		// 下面两行代码从上面注释掉的代码翻译而来
+		min1 = l1[min(len(l1), half)-1]
+		step1 = min(len(l1), half)
+
+		// if len(l2)-1 < half-1 { // 如果l2下标将要越界
+		// 	min2 = l2[len(l2)-1]
+		// 	step2 = len(l2)
+		// } else {
+		// 	min2 = l2[half-1]
+		// 	step2 = half
+		// }
+		// 下面两行代码从上面注释掉的代码翻译而来
+		min2 = l2[min(len(l2), half)-1]
+		step2 = min(len(l2), half)
+
+		if min1 <= min2 {
+			l1 = l1[step1:] // 这里如果用append, 将会改变原数组，从而对第二次查找造成影响
+			k -= step1
+		} else {
+			l2 = l2[step2:] // 不改变原数组，只改变指针
+			k -= step2
+		}
+	}
+}
+
+func min(a, b int) int {
+	if a <= b {
+		return a
+	}
+	return b
+}
 
 //TODO: 分割法
