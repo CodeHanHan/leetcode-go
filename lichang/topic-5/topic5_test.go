@@ -51,3 +51,19 @@ func Test_longestPalindrome_1(t *testing.T) {
 
 	require.Equal(t, "ccc", longestPalindrome_1("ccc"))
 }
+
+func Test_longestPalindrome_2(t *testing.T) {
+	require.Equal(t, "bab", longestPalindrome_2("babad"))
+
+	require.Equal(t, "bb", longestPalindrome_2("cbbd"))
+
+	require.Equal(t, "a", longestPalindrome_2("a"))
+
+	require.Equal(t, "a", longestPalindrome_2("ac"))
+
+	require.Equal(t, "cbc", longestPalindrome_2("acbc"))
+
+	require.Equal(t, "abcccba", longestPalindrome_2("abcccba"))
+
+	require.Equal(t, "ccc", longestPalindrome_2("ccc"))
+}
