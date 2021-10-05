@@ -1,4 +1,7 @@
 test:
-	go test -v -count=1 ./...
+	@go build ./... && go test -v -count=1 ./...
 
-.PHONY: test
+content:
+	@go run content.go
+
+.PHONY: test, content

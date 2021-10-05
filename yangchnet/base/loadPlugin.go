@@ -4,7 +4,7 @@ import (
 	"log"
 	"plugin"
 
-	list "github.com/CodeHanHan/leetcode-go/lichang/base/LinkList"
+	list "github.com/CodeHanHan/leetcode-go/yangchnet/base/LinkList"
 )
 
 func LoadLinkList(filename string) (
