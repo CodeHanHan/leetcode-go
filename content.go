@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -35,7 +34,7 @@ func main() {
 
 func listAllReadme(dir string) []*link {
 	links := make([]*link, 0)
-	fn := func(filename string) {
+	walkDir(dir, func(filename string) {
 		path := strings.Split(filename, "/")
 		suffix := path[len(path)-1]
 		if suffix != "readme.md" {
@@ -54,30 +53,27 @@ func listAllReadme(dir string) []*link {
 			log.Fatalf("error read file %v", filename)
 		}
 
+		title = title[2 : len(title)-1] // remove "# " and "\n"
 		links = append(links, &link{
 			path:  filename,
-			title: string(title)[2:],
+			title: string(title),
 		})
-	}
-
-	walkDir(dir, fn)
+	})
 	return links
 }
 
 func walkDir(dir string, fn func(filename string)) {
-	fileInfos, err := ioutil.ReadDir(dir)
+	fileEntrys, err := os.ReadDir(dir)
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
-
-	for _, info := range fileInfos {
-		if info.IsDir() {
-			childDir := fmt.Sprintf("%s/%s", dir, info.Name())
-			walkDir(childDir, fn)
+	for _, entry := range fileEntrys {
+		child := fmt.Sprintf("%s/%s", dir, entry.Name())
+		if entry.IsDir() {
+			walkDir(child, fn)
 		} else {
-			filename := fmt.Sprintf("%s/%s", dir, info.Name())
-			fn(filename)
+			fn(child)
 		}
 	}
 }
