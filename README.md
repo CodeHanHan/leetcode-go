@@ -64,3 +64,5 @@
 63. [整数反转](./yangchnet/topic-7/)   
 64. [字符串转换整数 (atoi)](./yangchnet/topic-8/)   
 65. [回文数](./yangchnet/topic-9/)   
+66. [合并两个有序链表](./yangchnet/topic21/)   
+67. [合并k个有序链表](./yangchnet/topic23/)   
