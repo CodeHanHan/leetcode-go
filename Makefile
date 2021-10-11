@@ -7,5 +7,8 @@ content:
 new-%:
 	@mkdir -p ./yangchnet/$*
 	@cd ./yangchnet/$* && touch readme.md $*.go $*_test.go
+	@cd ./yangchnet/$* && echo "package $*" > $*.go
+	@cd ./yangchnet/$* && echo "package $*" > $*_test.go
+
 
 .PHONY: test, content
