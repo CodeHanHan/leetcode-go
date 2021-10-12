@@ -66,3 +66,6 @@
 65. [回文数](./yangchnet/topic-9/)   
 66. [合并两个有序链表](./yangchnet/topic21/)   
 67. [合并k个有序链表](./yangchnet/topic23/)   
+68. [删除有序数组中的重复项](./yangchnet/topic26/)   
+69. [移除元素](./yangchnet/topic27/)   
+70. [搜索旋转排序数组](./yangchnet/topic33/)   
