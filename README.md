@@ -69,4 +69,5 @@
 68. [删除有序数组中的重复项](./yangchnet/topic26/)   
 69. [移除元素](./yangchnet/topic27/)   
 70. [搜索旋转排序数组](./yangchnet/topic33/)   
-71. [螺旋矩阵](./yangchnet/topic54/)   
+71. [字符串相乘](./yangchnet/topic43/)   
+72. [螺旋矩阵](./yangchnet/topic54/)   
