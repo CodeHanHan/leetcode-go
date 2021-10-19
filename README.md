@@ -70,5 +70,6 @@
 69. [移除元素](./yangchnet/topic27/)   
 70. [搜索旋转排序数组](./yangchnet/topic33/)   
 71. [字符串相乘](./yangchnet/topic43/)   
-72. [螺旋矩阵](./yangchnet/topic54/)   
-73. [螺旋矩阵（II）](./yangchnet/topic59/)   
+72. [全排列](./yangchnet/topic46/)   
+73. [螺旋矩阵](./yangchnet/topic54/)   
+74. [螺旋矩阵（II）](./yangchnet/topic59/)   
