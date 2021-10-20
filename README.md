@@ -73,3 +73,4 @@
 72. [全排列](./yangchnet/topic46/)   
 73. [螺旋矩阵](./yangchnet/topic54/)   
 74. [螺旋矩阵（II）](./yangchnet/topic59/)   
+75. [旋转列表](./yangchnet/topic61/)   
