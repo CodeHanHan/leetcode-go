@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package main
@@ -17,7 +18,7 @@ type link struct {
 }
 
 func main() {
-	curDir := "./"
+	curDir := "."
 
 	os.Remove("./README.md")
 	readmeF, err := os.Create("./README.md")
