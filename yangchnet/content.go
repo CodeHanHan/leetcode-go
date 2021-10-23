@@ -17,7 +17,7 @@ type link struct {
 }
 
 func main() {
-	curDir := "."
+	curDir := "./"
 
 	os.Remove("./README.md")
 	readmeF, err := os.Create("./README.md")
@@ -26,9 +26,8 @@ func main() {
 	}
 	defer readmeF.Close()
 
-	fmt.Fprintln(readmeF, "# LeetCode-go")
-
 	links1 := listAllReadme(curDir)
+	fmt.Fprintln(readmeF, "## yangchnet")
 	for i, link := range links1 {
 		dir, _ := filepath.Split(link.path)
 		fmt.Fprintf(readmeF, "%d. [%s](%s)   \n", i+1, link.title, dir)
