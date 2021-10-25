@@ -1,16 +1,26 @@
 package topic88
 
 func merge(nums1 []int, m int, nums2 []int, n int) {
-	l := m
-	k := 0
-	for i := 0; i < n; i++ {
-		for j := k; j < m; j++ {
-			if nums2[i] > nums1[j] && nums2[i] <= nums1[j] {
-				tmp := make([]int, l-j)
-				copy(tmp, nums2[j:l])
-				nums1 = append(nums1[:j], nums2[i])
-				nums1 = append(nums1[:j+1], tmp...)
-			}
+	tmp := make([]int, 0)
+
+	var i, j int = 0, 0
+	for i < m && j < n {
+		if nums1[i] <= nums2[j] {
+			tmp = append(tmp, nums1[i])
+			i++
+		} else {
+			tmp = append(tmp, nums2[j])
+			j++
 		}
 	}
+
+	for ; i < m; i++ {
+		tmp = append(tmp, nums1[i])
+	}
+
+	for ; j < n; j++ {
+		tmp = append(tmp, nums2[j])
+	}
+
+	copy(nums1, tmp)
 }
