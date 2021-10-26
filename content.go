@@ -27,6 +27,10 @@ func main() {
 	defer readmeF.Close()
 
 	fmt.Fprintln(readmeF, "# LeetCode-go")
+	fmt.Fprintln(readmeF, "[yangchnet](./yangchnet/)")
+	fmt.Fprintln(readmeF, "[HT-CHEN520](./HT-CHEN520/)")
+	fmt.Fprintln(readmeF, "[MyOwnBoss9808](./MyOwnBoss9808/)")
+	fmt.Fprintln(readmeF, "-----")
 
 	links1 := listAllReadme(curDir)
 	for i, link := range links1 {
