@@ -18,18 +18,24 @@ type link struct {
 }
 
 func main() {
-	curDir := "."
+	dir := "."
+	path, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	pathList := strings.Split(path, "/")
+	pwd := pathList[len(pathList)-1]
 
-	os.Remove("./README.md")
+	_ = os.Remove("./README.md")
 	readmeF, err := os.Create("./README.md")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer readmeF.Close()
 
-	links1 := listAllReadme(curDir)
-	fmt.Fprintln(readmeF, "## yangchnet")
-	for i, link := range links1 {
+	links2 := listAllReadme(dir)
+	fmt.Fprintln(readmeF, fmt.Sprintf("## %s", pwd))
+	for i, link := range links2 {
 		dir, _ := filepath.Split(link.path)
 		fmt.Fprintf(readmeF, "%d. [%s](%s)   \n", i+1, link.title, dir)
 	}

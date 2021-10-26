@@ -1,10 +1,10 @@
+USERDIR = $(shell ls -l | grep ^d | awk '{print $$9}')
+
 test:
-	@go build ./... && go test -v -count=1 ./...
+	@for dir in ${USERDIR}; do make -C $${dir} test; done
 
 content:
-	@cd ./yangchnet && make content
-	@cd ./HT-CHEN520 && make content
-	@go run content.go
+	@for dir in ${USERDIR}; do make -C $${dir} content; done
 
 lc-new-%:
 	@cd ./yangchnet && make new-$*

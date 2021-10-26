@@ -1,3 +1,6 @@
+test:
+	@go build ./... && go test -v -count=1 ./...
+	
 new-%:
 	@mkdir $*
 	@cd ./$* && touch readme.md $*.go $*_test.go
