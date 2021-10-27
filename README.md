@@ -9,16 +9,16 @@
 
 ## 1. First time here
 - Create a new directory named by your Github ID.
-- Copy content.go and Makefile from any existing user directory to your directory.
+- Copy `content.go` and `Makefile` from any existing user directory to your directory.
 - Create a new directory in your directory named by topic.
 - Change to your directory and run `make new-{your-topic-name}`, such as `make new-topic5`
 - Then you can code in your file.
 
 ## 2. In your directory
-- Every topic directory should contain `*.go`, `*_test.go` and a readme.md.
+- Every topic directory should contain `*.go`, `*_test.go` and a `readme.md`.
 - You should code in `*.go` and test in `*_test.go`.
-- In readme.md, you should use `# topic_name` as first line.
-- Except `# topic_name` in readme.md, there are `## 1. Title description`，`## 2. Example` and `## 3. Problem-solving`.
+- In `readme.md`, you should use `# topic_name` as first line.
+- Except `# topic_name` in `readme.md`, there are `## 1. Title description`，`## 2. Example` and `## 3. Problem-solving`.
 - You can add any code you need in your directory.
 
 ## 3. Submit code
