@@ -3,7 +3,7 @@
 <p align="center">
 <a href="https://github.com/CodeHanHan/leetcode-go/actions"><img src="https://github.com/CodeHanHan/leetcode-go/workflows/Go/badge.svg" alt="Build Status"></a>
 <a href="https://github.com/CodeHanHan/leetcode-go/blob/master/LICENSE"><img src="https://img.shields.io/github/license/CodeHanHan/leetcode-go" alt="License"></a>
-<a href="https://github.com/CodeHanHan/leetcode-go/pulls"><img alt="GitHub pull request check contexts" src="https://img.shields.io/github/status/contexts/pulls/CodeHanHan/leetcode-go/2?style=plastic"></a>
+<a href="https://github.com/CodeHanHan/leetcode-go/pulls"><img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/CodeHanHan/leetcode-go"></a>
 <a href="https://github.com/CodeHanHan/leetcode-go/commits/master"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/CodeHanHan/leetcode-go"></a>
 </p>
 
