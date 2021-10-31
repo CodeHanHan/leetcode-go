@@ -1,4 +1,4 @@
-package list
+package topic141
 
 import (
 	"bytes"
@@ -92,6 +92,10 @@ func insertToTail(head *ListNode, val int) *ListNode {
 
 // BuildCircleListWithNoHead build a circle list, which tail point to list[cursor]
 func BuildCircleListWithNoHead(list []int, cursor int) *ListNode {
+	if cursor >= len(list) {
+		return nil
+	}
+
 	l := BuildListWithNoHead(list)
 	tail := l.Tail()
 	p := l.Index(list[cursor])

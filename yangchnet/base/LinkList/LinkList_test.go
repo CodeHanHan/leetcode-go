@@ -1,17 +1,20 @@
 package list
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestBuildList(t *testing.T) {
-	l := BuildListWithHead([]int{1, 2, 3, 4, 5})
-	l1 := BuildListWithNoHead([]int{1, 2, 3, 4, 5})
 
-	fmt.Println(l)
-	fmt.Println(l1)
+	require.Equal(t, "1 → 2 → 3 → 4 → 5 → nil", BuildListWithHead([]int{1, 2, 3, 4, 5}).String())
 
-	fmt.Println(l.Slice())
-	fmt.Println(l1.Slice())
+	require.Equal(t, []int{1, 2, 3, 4, 5}, BuildListWithNoHead([]int{1, 2, 3, 4, 5}).Slice())
+
+	l1 := BuildListWithNoHead([]int{1, 2, 3, 4})
+
+	require.Equal(t, 4, l1.Tail().Val)
+
+	require.Equal(t, 3, l1.Index(3).Val)
 }
