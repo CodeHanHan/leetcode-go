@@ -10,4 +10,9 @@ new-%:
 content:
 	@go run content.go
 
-.PHONY: test, content
+clean:
+	@find . -name '*.exe' -type f -print -exec rm -rf {} \;
+	@find . -name '*.o' -type f -print -exec rm -rf {} \;
+	@find . -name '*.dll' -type f -print -exec rm -rf {} \;
+
+.PHONY: test, content,clean

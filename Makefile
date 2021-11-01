@@ -15,4 +15,7 @@ lc-list-%:yangchnet/base/LinkList/LinkList.go
 cht-new-%:
 	@cd ./HT-CHEN520 && make new-$*
 
+clean:
+	@for dir in ${USERDIR}; do make -C $${dir} clean; done
+
 .PHONY: test, content

@@ -23,6 +23,7 @@
 
 ## 3. Submit code
 - Fetch remote repository before submit to Github.
+- Do make clean.
 - Solve any conflicts existed in your local repository.
 - Every pull request should only contain one commit.
 - Request someone to review your code.
