@@ -1,4 +1,4 @@
-package list
+package topic142
 
 import (
 	"bytes"
@@ -49,27 +49,6 @@ func BuildListWithNoHead(nums []int) *ListNode {
 	return head
 }
 
-// Len return list length, when list has cycle structure, return -1
-func (l *ListNode) Len() int {
-	if l == nil {
-		return 0
-	}
-
-	if ok, _ := l.HasCycle(); ok {
-		return -1
-	}
-
-	var p *ListNode = l
-	length := 0
-	for p != nil {
-		length += 1
-		p = p.Next
-	}
-
-	return length
-}
-
-// Tail return last list node
 func (l *ListNode) Tail() *ListNode {
 	if l == nil {
 		return nil
@@ -83,41 +62,6 @@ func (l *ListNode) Tail() *ListNode {
 	return p
 }
 
-// HasCycle check if linklist has cycle structure, if not, return false, nil, if yes, return true and the cycle start node
-func (l *ListNode) HasCycle() (bool, *ListNode) {
-	if l == nil {
-		return false, nil
-	}
-
-	var p, q *ListNode = l, l
-	var step int = 0
-	for {
-		if q.Next != nil && q.Next.Next != nil {
-			p = p.Next
-			q = q.Next.Next
-			step += 1
-		} else {
-			return false, nil
-		}
-
-		if p == q {
-			break
-		}
-	}
-
-	var r *ListNode = l
-	for r != nil && p != nil {
-		if r == p {
-			return true, r
-		}
-		r = r.Next
-		p = p.Next
-	}
-
-	return false, nil
-}
-
-// Index return the node which value equals target
 func (l *ListNode) Index(target int) *ListNode {
 	if l == nil {
 		return nil
@@ -155,7 +99,6 @@ func BuildCircleListWithNoHead(list []int, cursor int) *ListNode {
 	return l
 }
 
-// Slice return slice which contains all node's values in order.
 func (l *ListNode) Slice() []int {
 	var p *ListNode = l
 	if l.Val < 0 {
@@ -169,7 +112,6 @@ func (l *ListNode) Slice() []int {
 	return a
 }
 
-// String implements Stringer interface.
 func (l *ListNode) String() string {
 	ret := bytes.Buffer{}
 	var p *ListNode = l
