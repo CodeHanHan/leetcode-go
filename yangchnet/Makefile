@@ -15,6 +15,14 @@ list-%:./base/LinkList/LinkList.go
 	@cp $< ./$*/
 	@sed -i 's/package list/package $*/g' ./$*/LinkList.go
 
+tree-%:./base/Tree/Tree.go
+	@mkdir $*
+	@cd ./$* && touch readme.md $*.go $*_test.go
+	@cd ./$* && echo "package $*" > $*.go
+	@cd ./$* && echo "package $*" > $*_test.go
+	@cp $< ./$*/
+	@sed -i 's/package tree/package $*/g' ./$*/Tree.go
+
 content:
 	@go run content.go
 
