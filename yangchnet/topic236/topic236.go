@@ -1,9 +1,6 @@
-package topic235
+package topic236
 
-// 解法1
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
-	a, b := p.Val, q.Val
-
 	pre := make([]int, 0)
 	in := make([]int, 0)
 
@@ -18,15 +15,15 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	var target int
 	var fn func(pre, in []int)
 	fn = func(pre, in []int) {
-		if a < pre[0] && b > pre[0] || a > pre[0] && b < pre[0] || a == pre[0] || b == pre[0] { // 在两侧, 或某一个等于root
+		ia, ib, rootIndex := indexOf(in, p.Val), indexOf(in, q.Val), indexOf(in, pre[0])
+
+		if ia < rootIndex && ib > rootIndex || ia > rootIndex && ib < rootIndex || ia == rootIndex || ib == rootIndex { // 在两侧, 或某一个等于root
 			target = pre[0]
 			return
-		} else if a < pre[0] && b < pre[0] {
-			index := indexOf(in, pre[0])
-			fn(pre[1:index+1], in[0:index])
-		} else if a > pre[0] && b > pre[0] {
-			index := indexOf(in, pre[0])
-			fn(pre[index+1:], in[index+1:])
+		} else if ia < rootIndex && ib < rootIndex {
+			fn(pre[1:rootIndex+1], in[0:rootIndex])
+		} else if ia > rootIndex && ib > rootIndex {
+			fn(pre[rootIndex+1:], in[rootIndex+1:])
 		}
 	}
 
@@ -44,11 +41,15 @@ func findNode(root *TreeNode, target int) *TreeNode {
 		return root
 	}
 
-	if root.Val < target {
-		return findNode(root.Right, target)
-	} else {
-		return findNode(root.Left, target)
+	if node := findNode(root.Left, target); node != nil {
+		return node
 	}
+
+	if node := findNode(root.Right, target); node != nil {
+		return node
+	}
+
+	return nil
 }
 
 func indexOf(nums []int, target int) int {
@@ -81,18 +82,23 @@ func inOrder(root *TreeNode, visit func(val int)) {
 	inOrder(root.Right, visit)
 }
 
-// 解法2
 func lowestCommonAncestor_1(root, p, q *TreeNode) *TreeNode {
 	if root == nil {
 		return nil
 	}
 
-	if p.Val < root.Val && q.Val > root.Val || p.Val > root.Val && q.Val < root.Val || p.Val == root.Val || q.Val == root.Val {
+	if p == root || q == root {
 		return root
-	} else if p.Val < root.Val && q.Val < root.Val {
-		return lowestCommonAncestor_1(root.Left, p, q)
-	} else if p.Val > root.Val && q.Val > root.Val {
-		return lowestCommonAncestor_1(root.Right, p, q)
+	}
+
+	left := lowestCommonAncestor_1(root.Left, p, q)
+	right := lowestCommonAncestor_1(root.Right, p, q)
+	if left != nil && right != nil {
+		return root
+	} else if left != nil {
+		return left
+	} else if right != nil {
+		return right
 	}
 
 	return nil
