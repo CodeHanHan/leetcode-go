@@ -10,7 +10,6 @@
 ## 1. First time here
 - Create a new directory named by your Github ID.
 - Copy `content.go` and `Makefile` from any existing user directory to your directory.
-- Create a new directory in your directory named by topic.
 - Change to your directory and run `make new-{your-topic-name}`, such as `make new-topic5`
 - Then you can code in your file.
 
