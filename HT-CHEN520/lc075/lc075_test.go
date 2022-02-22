@@ -13,5 +13,5 @@ func Test_sortColors(t *testing.T) {
 
 	b := []int{2, 0, 1}
 	sortColors(b)
-	require.Equal(t, []int{0, 1, 2}, a)
+	require.Equal(t, []int{0, 1, 2}, b)
 }
