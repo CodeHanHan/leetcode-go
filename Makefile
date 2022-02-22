@@ -1,21 +1,25 @@
-USERDIR = $(shell ls -l | grep ^d | awk '{print $$9}')
+ROOT_PACKAGE=github.com/Codehanhan/leetcode-go
 
-test:
-	@for dir in ${USERDIR}; do make -C $${dir} test; done
+COMMON_SELF_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
 
-content:
-	@for dir in ${USERDIR}; do make -C $${dir} content; done
+ifeq ($(origin ROOT_DIR),undefined)
+ROOT_DIR := $(abspath $(shell cd $(COMMON_SELF_DIR) && pwd -P))
+endif
 
-lc-new-%:
-	@cd ./yangchnet && make new-$*
+USERS ?= yangchnet HT-CHEN520 MyOwnBoss9808
 
-lc-list-%:yangchnet/base/LinkList/LinkList.go
-	@cd ./yangchnet && make list-$*
+include yangchnet/yangchnet.mk
+include yangchnet/offer/offer.mk
+include yangchnet/topic/topic.mk
+include yangchnet/goden/goden.mk
 
+# TODO content 
+
+.PHONY: test
+test: 
+	@$(MAKE) yangchnet.test
+	@cd HT-CHEN520 && make test
+
+.PHONY: cht-new-%
 cht-new-%:
 	@cd ./HT-CHEN520 && make new-$*
-
-clean:
-	@for dir in ${USERDIR}; do make -C $${dir} clean; done
-
-.PHONY: test, content
