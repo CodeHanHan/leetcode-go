@@ -3,6 +3,8 @@ package stack
 import (
 	"fmt"
 	"testing"
+
+	_ "github.com/spf13/pflag"
 )
 
 func Test_stack(t *testing.T) {
