@@ -7,7 +7,7 @@ ifeq ($(origin ROOT_DIR),undefined)
 ROOT_DIR := $(abspath $(shell cd $(COMMON_SELF_DIR) && pwd -P))
 endif
 
-USERS ?= yangchnet HT-CHEN520
+USERS ?= yangchnet htchen
 
 ## content: 在每个用户文件夹下生成目录.
 .PHONY: content
