@@ -53,6 +53,13 @@ graphql_query = '''query getQuestionDetail($titleSlug: String!) {
             }
         }'''
 
+gotest_template = """import "testing"
+
+func Test_{0}(t *testing.T){{
+    panic("not implemented") // TODO: Implement
+}}
+"""
+
 
 def convert(src):
     # pre内部预处理
@@ -160,15 +167,19 @@ def gen_files(url: str, username: str, dir: str, num: str):
 
     url = "https://leetcode-cn.com/problems/" + slug
 
+    # 获取一些变量
     question = get_all(slug=slug)
     title = question['questionFrontendId'] + '.' + question['translatedTitle']
 
     content = get_problem_content(slug)
 
-    func = get_solution_by_lang(slug, 'Go')
+    raw_func = get_solution_by_lang(slug, 'Go')
     func = re.compile(r'({\n.*?\n})').sub(
-        "{\n\tpanic(\"not implemented\") // TODO: Implement\n}", func, 1)
+        "{\n\tpanic(\"not implemented\") // TODO: Implement\n}", raw_func, 1)
     content = re.sub(r'\n\n\n\n*', "\n", content)  # 替换掉多个换行符
+
+    func_name = re.compile(r'(func\s\w+)').findall(raw_func)[0].split(" ")[-1]
+    test_func = gotest_template.format(func_name)
 
     # 获取当前目录
     base_dir = os.getcwd()
@@ -184,9 +195,14 @@ def gen_files(url: str, username: str, dir: str, num: str):
         go_file.write("\n")
         go_file.write(func)
 
+    # 向go_test文件中写入测试函数
+    with open(os.path.join(base_dir, username, dir, go_package, go_package+"_test"+".go"), mode='a') as test_file:
+        test_file.write("\n")
+        test_file.write(test_func)
     return
 
 
 if __name__ == '__main__':
     url = input("请输入题目链接: ")
     gen_files(url=url, username=sys.argv[1], dir=sys.argv[2], num=sys.argv[3])
+    # gen_files(url=url, username="yangchnet", dir="goden", num="0103")
