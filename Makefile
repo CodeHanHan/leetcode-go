@@ -46,9 +46,10 @@ new.%:
 	@cd ./$(username)/$(dir) && \
 	 mkdir $(dir)$(num) && \
 	 cd $(dir)$(num) && \
-	 touch readme.md $(dir)$(num).go $(dir)$(num)_test.go && \
+	 touch $(dir)$(num).go $(dir)$(num)_test.go && \
 	 echo "package $(dir)$(num)" > $(dir)$(num).go && \
 	 echo "package $(dir)$(num)" > $(dir)$(num)_test.go
+	@python3 gen_readme.py $(username) $(dir) $(num)
 	
 ## list.<username>.<dir>.<num> : 生成具有链表数据结构的题目目录.
 .PHONY: list.%
