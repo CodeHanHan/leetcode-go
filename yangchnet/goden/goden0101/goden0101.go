@@ -1,5 +1,6 @@
 package goden0101
 
+// 解法4
 func isUnique(astr string) bool {
 	var bin int64 = 0
 	for _, b := range astr {
