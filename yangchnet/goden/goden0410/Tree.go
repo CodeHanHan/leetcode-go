@@ -1,4 +1,4 @@
-package tree
+package goden0410
 
 type TreeNode struct {
 	Val   int
@@ -6,7 +6,6 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-// BuildTree 根据前序遍历序列和中序遍历序列构造一个树，遍历序列中不可含有重复值
 func BuildTree(preorder []int, inorder []int) *TreeNode {
 	if len(inorder) < 1 {
 		return nil
