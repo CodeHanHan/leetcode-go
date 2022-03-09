@@ -71,3 +71,43 @@ func (root *TreeNode) Find(v int) *TreeNode {
 
 	return n
 }
+
+type Measurer interface {
+	height() int
+}
+
+func (t *TreeNode) height() int {
+	if t == nil {
+		return 0
+	}
+
+	return 1 + max(t.Left.height(), t.Right.height())
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+
+	return b
+}
+
+type Balancer interface {
+	measurer() bool
+}
+
+func (t *TreeNode) measurer() bool {
+	if t == nil {
+		return true
+	}
+
+	return t.Left.measurer() && t.Right.measurer() && abs(t.Left.height()-t.Right.height()) <= 1
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+
+	return x
+}
