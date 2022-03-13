@@ -1,5 +1,9 @@
 package goden0410
 
+import (
+	. "github.com/CodeHanHan/leetcode-go/base/Tree"
+)
+
 /**
  * Definition for a binary tree node.
  * type TreeNode struct {
