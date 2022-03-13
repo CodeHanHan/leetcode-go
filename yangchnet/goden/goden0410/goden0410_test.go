@@ -4,6 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
+
+	. "github.com/CodeHanHan/leetcode-go/base/Tree"
 )
 
 func Test_checkSubTree(t *testing.T) {

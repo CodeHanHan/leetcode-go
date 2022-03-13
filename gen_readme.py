@@ -53,7 +53,9 @@ graphql_query = '''query getQuestionDetail($titleSlug: String!) {
             }
         }'''
 
-gotest_template = """import "testing"
+gotest_template = """import (
+    "testing"
+)
 
 func Test_{0}(t *testing.T){{
     panic("not implemented") // TODO: Implement
