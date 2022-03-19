@@ -1,9 +1,6 @@
 package lc072
 
 func minDistance(word1 string, word2 string) int {
-    if len(word1)==0 && len(word2)==0{
-        return 0
-    }
 	m, n := len(word1), len(word2)
 	dp := make([][]int, m+1)
 	for i := 0; i < m+1; i++ {
