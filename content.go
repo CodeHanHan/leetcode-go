@@ -54,7 +54,7 @@ func main() {
 func writeReadme(w io.Writer, links []*link, title string) {
 	fmt.Fprintln(w, fmt.Sprintf("## %s", title)) // 写入标题
 	for i, link := range links {                 // 写入目录
-		fmt.Fprintf(w, "%d. [%s](./%s%s)   \n", i+1, link.title, link.path, "readme.md")
+		fmt.Fprintf(w, "%d. [%s](./%s%s)\n", i+1, link.title, link.path, "readme.md")
 	}
 }
 
