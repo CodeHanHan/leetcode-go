@@ -30,9 +30,12 @@
 输出：0
 ```
 
-**提示**  
+**提示**
+
 - $0 <= haystack.length, needle.length <= 5 * 10^4$
 - haystack 和 needle 仅由小写英文字符组成
 
 ## 3. 解题
+
 1. 暴力匹配
+2. KMP

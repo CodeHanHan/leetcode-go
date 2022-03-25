@@ -17,3 +17,21 @@ func removeElement(nums []int, val int) int {
 	fmt.Printf("%v", nums)
 	return l
 }
+
+func removeElement2(nums []int, val int) int {
+	i := 0
+	for {
+		if i >= len(nums) {
+			break
+		}
+
+		if nums[i] == val {
+			nums = append(nums[:i], nums[i+1:]...)
+			continue
+		}
+
+		i++
+	}
+
+	return len(nums)
+}

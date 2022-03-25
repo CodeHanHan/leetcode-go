@@ -19,10 +19,10 @@ func threeSum(nums []int) [][]int {
 		for l < r {
 			if nums[i]+nums[l]+nums[r] == 0 {
 				ret = append(ret, []int{nums[i], nums[l], nums[r]})
-				for l < r && nums[l] == nums[l+1] {
+				for l < r && nums[l] == nums[l+1] { // 防止重复
 					l += 1
 				}
-				for l < r && nums[r] == nums[r-1] {
+				for l < r && nums[r] == nums[r-1] { // 防止重复
 					r -= 1
 				}
 				l++

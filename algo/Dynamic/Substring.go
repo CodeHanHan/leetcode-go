@@ -27,7 +27,7 @@ func LongestCommonSubString(s1, s2 string) int {
 			dp[row][0] = 1
 		} else if row != 0 { // s1与s2当前字符不相等
 			dp[row][0] = dp[row-1][0]
-		} else { // s1第一个字符与是s2不相等
+		} else { // s1第一个字符与s2不相等
 			dp[row][0] = 0
 		}
 	}

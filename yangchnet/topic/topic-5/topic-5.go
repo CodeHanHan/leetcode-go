@@ -11,8 +11,8 @@ func longestPalindrome(s string) string {
 	var start int = 0 // 指向最长回文串的开始元素
 
 	for i := 1; i < len(s); i++ {
-		l := -1
-		for j := 0; j < i; j++ {
+		l := -1                  // 回文串长度
+		for j := 0; j < i; j++ { // 找寻以当前坐标为结束的字符串的最长回文串长度
 			if s[j] == s[i] && isPalindrome(s[j:i+1]) {
 				l = max(l, i-j+1)
 			}
@@ -79,6 +79,8 @@ func longestPalindrome_1(s string) string {
 	return s[start : start+cur]
 }
 
+// ==========================================
+
 // 中心扩展法
 func longestPalindrome_2(s string) string {
 	var start, l int = 0, 1 // start 存储回文串的开始位置下标，l存储最长回文串的长度
@@ -112,4 +114,31 @@ func longestPalindrome_2(s string) string {
 		}
 	}
 	return s[start : start+l]
+}
+
+// ==========================================
+
+// 中心扩展法2
+func longestPalindrome2(s string) string {
+	start, end := 0, 0
+	for i := 0; i < len(s); i++ {
+		left1, right1 := expendCenter(s, i, i)
+		left2, right2 := expendCenter(s, i, i+1)
+		if right1-left1 > end-start {
+			start, end = left1, right1
+		}
+		if right2-left2 > end-start {
+			start, end = left2, right2
+		}
+	}
+	return s[start : end+1]
+}
+
+func expendCenter(s string, left, right int) (int, int) {
+	for ; left >= 0 && right < len(s); left, right = left-1, right+1 {
+		if s[left] != s[right] {
+			break
+		}
+	}
+	return left + 1, right - 1
 }
