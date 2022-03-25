@@ -1,5 +1,7 @@
 package topic035
 
+import "sort"
+
 func searchInsert(nums []int, target int) int {
 	for i := 0; i < len(nums); i++ {
 		if target <= nums[i] {
@@ -29,4 +31,8 @@ func searchInsert_1(nums []int, target int) int {
 	}
 
 	return len(nums)
+}
+
+func searchInsert_2(nums []int, target int) int {
+	return sort.SearchInts(nums, target)
 }

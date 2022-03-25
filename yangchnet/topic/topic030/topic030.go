@@ -51,6 +51,7 @@ func findSubstring_1(s string, words []string) []int {
 	for _, w := range words {
 		oriMap[w]++
 	}
+
 	wordSize := len(words[0])
 	stepSize := wordSize * len(words)
 	var check = func(sk string) bool {
@@ -61,6 +62,7 @@ func findSubstring_1(s string, words []string) []int {
 		}
 		return reflect.DeepEqual(nowMap, oriMap)
 	}
+
 	res := []int{}
 	for i := 0; i+stepSize <= len(s); i++ {
 		ss := s[i : i+stepSize]
@@ -68,5 +70,6 @@ func findSubstring_1(s string, words []string) []int {
 			res = append(res, i)
 		}
 	}
+
 	return res
 }
