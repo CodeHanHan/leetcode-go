@@ -33,21 +33,3 @@ func verifyPostorder(postorder []int) bool {
 
 	return verifyPostorder(lChild) && verifyPostorder(rChild)
 }
-
-//func judge(postorder []int, lastLeft int)bool{
-//    root := postorder[len(postorder)]  //根节点
-//    lChild := postorder[0: lastLeft+1]      //左子树
-//    rChild := postorder[lastLeft+1: len(postorder)-1]       //右子树
-//    for i := 0; i < len(lChild); i++ {
-//        if root < lChild[i] {
-//            return false
-//        }
-//    }
-//    for i := 0; i < len(rChild); i++ {
-//        if root > rChild[i] {
-//            return false
-//        }
-//    }
-//    return judge(postorder)
-//
-//}

@@ -9,6 +9,8 @@ import (
 func Test_maxProfit(t *testing.T) {
 	require.Equal(t, 0, maxProfit([]int{7}))
 
+	require.Equal(t, 4, maxProfit([]int{7, 1, 5}))
+
 	require.Equal(t, 0, maxProfit([]int{7, 6, 5, 4, 3, 2, 1}))
 
 	require.Equal(t, 5, maxProfit([]int{7, 1, 5, 3, 6, 4}))
@@ -18,20 +20,4 @@ func Test_maxProfit(t *testing.T) {
 	require.Equal(t, 0, maxProfit([]int{1, 1, 1, 1, 1}))
 
 	require.Equal(t, 1, maxProfit([]int{4, 1, 2}))
-}
-
-func Test_maxProfit_1(t *testing.T) {
-	require.Equal(t, 0, maxProfit_1([]int{7}))
-
-	require.Equal(t, 4, maxProfit_1([]int{7, 1, 5}))
-
-	require.Equal(t, 0, maxProfit_1([]int{7, 6, 5, 4, 3, 2, 1}))
-
-	require.Equal(t, 5, maxProfit_1([]int{7, 1, 5, 3, 6, 4}))
-
-	require.Equal(t, 6, maxProfit_1([]int{1, 7}))
-
-	require.Equal(t, 0, maxProfit_1([]int{1, 1, 1, 1, 1}))
-
-	require.Equal(t, 1, maxProfit_1([]int{4, 1, 2}))
 }

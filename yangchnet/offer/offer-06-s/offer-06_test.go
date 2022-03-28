@@ -3,6 +3,8 @@ package offer_06_s
 import (
 	"reflect"
 	"testing"
+
+	. "github.com/CodeHanHan/leetcode-go/base/LinkList"
 )
 
 func Test_reversePrint(t *testing.T) {
@@ -17,12 +19,12 @@ func Test_reversePrint(t *testing.T) {
 		// TODO: Add test cases.
 		{
 			name: "1",
-			args: args{head: BuildList([]int{1, 2, 3, 4, 5})},
+			args: args{head: BuildListWithHead([]int{1, 2, 3, 4, 5})},
 			want: []int{5, 4, 3, 2, 1},
 		},
 		{
 			name: "2",
-			args: args{head: BuildList([]int{1, 3, 2})},
+			args: args{head: BuildListWithHead([]int{1, 3, 2})},
 			want: []int{2, 3, 1},
 		},
 	}

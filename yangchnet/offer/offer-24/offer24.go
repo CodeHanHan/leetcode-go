@@ -1,9 +1,8 @@
 package offer24
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import (
+	. "github.com/CodeHanHan/leetcode-go/base/LinkList"
+)
 
 func reverseList(head *ListNode) *ListNode {
 	if head == nil {
@@ -42,4 +41,24 @@ func traverseList(head *ListNode) []int {
 		p = p.Next
 	}
 	return nums
+}
+
+func reverseList2(head *ListNode) *ListNode {
+	var res *ListNode
+	var fn func(pre, cur *ListNode, op func(pre, cur *ListNode))
+	fn = func(pre, cur *ListNode, op func(pre, cur *ListNode)) {
+		if cur == nil {
+			res = pre
+			return
+		}
+
+		fn(cur, cur.Next, op)
+		op(pre, cur)
+	}
+
+	fn(nil, head, func(pre, cur *ListNode) {
+		cur.Next = pre
+	})
+
+	return res
 }
