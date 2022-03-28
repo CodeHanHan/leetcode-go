@@ -27,5 +27,4 @@ func symmetry(l, r *TreeNode) bool {
 		return false
 	}
 	return symmetry(l.Left, r.Right) && symmetry(l.Right, r.Left)
-
 }

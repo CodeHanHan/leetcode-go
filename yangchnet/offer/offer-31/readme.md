@@ -8,30 +8,38 @@
 
 ## 2. 示例
 
-示例 1：  
-输入：pushed = [1,2,3,4,5], popped = [4,5,3,2,1]  
-输出：true  
-解释：我们可以按以下顺序执行：  
-push(1), push(2), push(3), push(4), pop() -> 4,  
-push(5), pop() -> 5, pop() -> 3, pop() -> 2, pop() -> 1  
+示例 1：
+```
+输入：pushed = [1,2,3,4,5], popped = [4,5,3,2,1]
+输出：true
+解释：我们可以按以下顺序执行：
+push(1), push(2), push(3), push(4), pop() -> 4,
+push(5), pop() -> 5, pop() -> 3, pop() -> 2, pop() -> 1
+```
 
-示例 2：  
-输入：pushed = [1,2,3,4,5], popped = [4,3,5,1,2]  
-输出：false  
-解释：1 不能在 2 之前弹出。  
+示例 2：
+```
+输入：pushed = [1,2,3,4,5], popped = [4,3,5,1,2]
+输出：false
+解释：1 不能在 2 之前弹出。
+```
 
-提示：    
-0 <= pushed.length == popped.length <= 1000  
-0 <= pushed[i], popped[i] < 1000  
-pushed 是 popped 的排列。  
+** 提示：**
+- 0 <= pushed.length == popped.length <= 1000
+- 0 <= pushed[i], popped[i] < 1000
+- pushed 是 popped 的排列。
 
 ## 3. 解题
-1. 回溯法  
+
+1. 回溯法
+
 穷举出所有可能性，再看有没有给出的出栈序列
+
 2. 贪心算法
-    * 将第一个数字压栈
-        * 当前popped的第一个数字是否为栈顶
-            * 若popped[1] 既不在栈顶，且pushed为空，则结束，返回false
-            * 不在栈顶，则继续压栈
-            * 在栈顶，出栈，popped长度减1
-        
+
+- 将第一个数字压栈
+- 当前popped的第一个数字是否为栈顶
+- 若popped[1] 既不在栈顶，且pushed为空，则结束，返回false
+- 不在栈顶，则继续压栈
+- 在栈顶，出栈，popped长度减1
+

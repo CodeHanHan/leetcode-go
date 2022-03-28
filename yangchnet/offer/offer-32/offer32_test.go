@@ -3,6 +3,8 @@ package offer32
 import (
 	"reflect"
 	"testing"
+
+	. "github.com/CodeHanHan/leetcode-go/base/Tree"
 )
 
 func Test_levelOrder(t *testing.T) {

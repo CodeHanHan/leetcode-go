@@ -93,11 +93,11 @@ func lowestCommonAncestor_1(root, p, q *TreeNode) *TreeNode {
 
 	left := lowestCommonAncestor_1(root.Left, p, q)
 	right := lowestCommonAncestor_1(root.Right, p, q)
-	if left != nil && right != nil {
+	if left != nil && right != nil { // 两个结点在root的两侧
 		return root
-	} else if left != nil {
+	} else if left != nil { // 两个节点都在root的左侧
 		return left
-	} else if right != nil {
+	} else if right != nil { // 两个节点都在root的右侧
 		return right
 	}
 
