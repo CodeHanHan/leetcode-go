@@ -1,6 +1,6 @@
 package lc300
 
-func lengthOfLIS(nums []int) int {
+func lengthOfLIS1(nums []int) int {
 	n := len(nums)
 	if n == 0 {
 		return 0
@@ -29,4 +29,34 @@ func max(a ...int) int {
 		}
 	}
 	return res
+}
+
+func lengthOfLIS2(nums []int) int {
+	n := len(nums)
+	if n == 0 {
+		return 0
+	}
+
+	d := make([]int, n+1)
+	len := 1
+	d[len] = nums[0]
+	for i := 0; i < n; i++ {
+		if nums[i] > d[len] {
+			len += 1
+			d[len] = nums[i]
+		} else {
+			left, right, pos := 1, len, 0
+			for left <= right {
+				mid := (left + right) / 2
+				if nums[i] > d[mid] {
+					pos = mid
+					left = mid + 1
+				} else {
+					right = mid - 1
+				}
+			}
+			d[pos+1] = nums[i]
+		}
+	}
+	return len
 }
