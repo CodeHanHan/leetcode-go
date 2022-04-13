@@ -2,6 +2,7 @@ package topic300
 
 import "sort"
 
+// 动态规划求LIS
 func lengthOfLIS(nums []int) int {
 	if len(nums) <= 1 {
 		return len(nums)
@@ -35,6 +36,7 @@ func max(a, b int) int {
 	return b
 }
 
+// 二分法求LIS
 func lengthOfLIS2(nums []int) int {
 	dp := make([]int, len(nums))
 
