@@ -1,5 +1,6 @@
 package topic001
 
+// 双重循环，暴力求解
 func twoSum(nums []int, target int) []int {
 	for i := 0; i < len(nums); i++ {
 		for j := i + 1; j < len(nums); j++ {
