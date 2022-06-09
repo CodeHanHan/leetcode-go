@@ -87,7 +87,7 @@ def get_all(slug: str) -> dict:
     """
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36"
     session = requests.Session()
-    url = "https://leetcode-cn.com/graphql"
+    url = "https://leetcode.cn/graphql"
     params = {
         'operationName':
         "getQuestionDetail",
@@ -160,14 +160,14 @@ def gen_files(url: str, username: str, dir: str, num: str):
         根据 url 生成对应的文件
     """
 
-    if url.startswith("https://leetcode-cn.com/problems/"):
-        slug = url.replace("https://leetcode-cn.com/problems/", "",
+    if url.startswith("https://leetcode.cn/problems/"):
+        slug = url.replace("https://leetcode.cn/problems/", "",
                            1).strip('/')
     else:
         print("Generate readme.md failed. Got Wrong URL!!!\nIt should be like https://leetcode-cn.com/problems/evaluate-division/")
         return
 
-    url = "https://leetcode-cn.com/problems/" + slug
+    url = "https://leetcode.cn/problems/" + slug
 
     # 获取一些变量
     question = get_all(slug=slug)
