@@ -54,8 +54,6 @@ new.%:
 ## list.<username>.<dir>.<num> : 生成具有链表数据结构的题目目录.
 .PHONY: list.%
 list.%: new.%
-	# @cp ./base/LinkList/LinkList.go ./$(username)/$(dir)/$(dir)$(num)/LinkList.go
-	# @sed -i 's/package list/package $(dir)$(num)/g' ./$(username)/$(dir)/$(dir)$(num)/LinkList.go
 	@sed -i \
 	 's/package $(dir)$(num)/package $(dir)$(num)\n\nimport (\n\t. "github.com\/CodeHanHan\/leetcode-go\/base\/LinkList"\n)/g' \
 	 ./$(username)/$(dir)/$(dir)$(num)/$(dir)$(num).go
@@ -66,8 +64,6 @@ list.%: new.%
 ## tree.<username>.<dir>.<num>: 生成具有二叉树数据结构的题目目录.
 .PHONY: tree.%
 tree.%: new.%
-	# @cp ./base/Tree/Tree.go ./$(username)/$(dir)/$(dir)$(num)/Tree.go
-	# @sed -i 's/package tree/package $(dir)$(num)/g' ./$(username)/$(dir)/$(dir)$(num)/Tree.go
 	@sed -i \
 	 's/package $(dir)$(num)/package $(dir)$(num)\n\nimport (\n\t. "github.com\/CodeHanHan\/leetcode-go\/base\/Tree"\n)/g' \
 	 ./$(username)/$(dir)/$(dir)$(num)/$(dir)$(num).go
