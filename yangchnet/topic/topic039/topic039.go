@@ -60,7 +60,7 @@ func combinationSum_1(candidates []int, target int) (ans [][]int) {
 		// 选择当前数
 		if target-candidates[idx] >= 0 {
 			comb = append(comb, candidates[idx])
-			dfs(target-candidates[idx], idx)
+			dfs(target-candidates[idx], idx) // 每个数字可以被无限制重复选取，因此搜索的下标仍为 idx
 			comb = comb[:len(comb)-1]
 		}
 	}
