@@ -171,6 +171,9 @@ func (l *ListNode) Slice() []int {
 
 // String implements Stringer interface.
 func (l *ListNode) String() string {
+	if l == nil {
+		return "nil"
+	}
 	ret := bytes.Buffer{}
 	var p *ListNode = l
 	if l.Val < 0 {
