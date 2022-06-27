@@ -259,5 +259,6 @@
 258. [82.删除排序链表中的重复元素 II](./topic/topic82/readme.md)
 259. [83.删除排序链表中的重复元素](./topic/topic83/readme.md)
 260. [84.柱状图中最大的矩形](./topic/topic84/readme.md)
-261. [合并两个有序数组](./topic/topic88/readme.md)
-262. [格雷编码](./topic/topic89/readme.md)
+261. [86.分隔链表](./topic/topic86/readme.md)
+262. [合并两个有序数组](./topic/topic88/readme.md)
+263. [格雷编码](./topic/topic89/readme.md)
