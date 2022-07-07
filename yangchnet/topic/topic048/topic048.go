@@ -38,3 +38,38 @@ func rotate_1(matrix [][]int) {
 		}
 	}
 }
+
+func rotate2(matrix [][]int) [][]int {
+	if len(matrix) < 1 {
+		return matrix
+	}
+
+	m, n := len(matrix), len(matrix[0])
+	ans := make([][]int, n)
+	for i, _ := range ans {
+		ans[i] = make([]int, m)
+	}
+
+	for i := m - 1; i >= 0; i-- {
+		for j := 0; j < n; j++ {
+			ans[j][m-i-1] = matrix[i][j]
+		}
+	}
+
+	return ans
+}
+
+func rotate3(matrix [][]int) {
+	n := len(matrix)
+	for i := 0; i < n; i++ {
+		for j := i; j < n; j++ {
+			matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+		}
+	}
+
+	for i := 0; i < n; i++ {
+		for j, k := 0, n-1; j <= k; j, k = j+1, k-1 {
+			matrix[i][j], matrix[i][k] = matrix[i][k], matrix[i][j]
+		}
+	}
+}
