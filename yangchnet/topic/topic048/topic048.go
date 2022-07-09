@@ -39,6 +39,7 @@ func rotate_1(matrix [][]int) {
 	}
 }
 
+// 如果是n*m矩阵，也可旋转
 func rotate2(matrix [][]int) [][]int {
 	if len(matrix) < 1 {
 		return matrix
