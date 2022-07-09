@@ -12,3 +12,10 @@ func Test_merge(t *testing.T) {
 
 	require.Equal(t, []int{1, 2, 3}, a)
 }
+
+func Test_merge1(t *testing.T) {
+	a := []int{1, 3, 0}
+	merge1(a, 2, []int{2}, 1)
+
+	require.Equal(t, []int{1, 2, 3}, a)
+}

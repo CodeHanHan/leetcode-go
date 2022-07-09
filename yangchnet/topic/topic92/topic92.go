@@ -55,3 +55,48 @@ func reverseBetween(head *ListNode, left int, right int) *ListNode {
 
 	return _head.Next
 }
+
+func reverseBetween1(head *ListNode, left int, right int) *ListNode {
+	if head == nil || left == right {
+		return head
+	}
+	_head := &ListNode{Val: math.MaxInt32, Next: head}
+	var leftPre, leftPtr, rightPost, rightPtr *ListNode
+	pre, cur := _head, head
+	for cur != nil {
+		if cur.Val == left {
+			leftPre = pre
+			leftPtr = cur
+		}
+		if cur.Val == right {
+			rightPost = cur.Next
+			rightPtr = cur
+			cur.Next = nil
+			break
+		}
+		pre = cur
+		cur = cur.Next
+	}
+	if leftPtr == nil || rightPtr == nil {
+		return _head.Next
+	}
+
+	var newHead *ListNode
+	var reverse func(head *ListNode) *ListNode
+	reverse = func(head *ListNode) *ListNode {
+		if head.Next == nil {
+			newHead = head
+			return head
+		}
+
+		pre := reverse(head.Next)
+		pre.Next = head
+
+		return head
+	}
+
+	reverse(leftPtr).Next = rightPost
+	leftPre.Next = newHead
+
+	return _head.Next
+}

@@ -51,3 +51,25 @@ func switchDrc(i, j int, curDrc int) (x int, y int, drc int) {
 	y = j + drcs[drc][1]
 	return
 }
+
+func spiralOrder1(matrix [][]int) []int {
+	ans, i, j, di, dj := []int{}, 0, 0, 0, 1
+	if len(matrix) < 1 {
+		return ans
+	}
+
+	n, m := len(matrix), len(matrix[0])
+
+	for k := 0; k < n*m; k++ {
+		ans = append(ans, matrix[i][j])
+		matrix[i][j] = 0
+		if matrix[(i+di+n)%len(matrix)][(j+dj+m)%len(matrix[0])] == 0 {
+			di, dj = dj, -di
+		}
+
+		i += di
+		j += dj
+	}
+
+	return ans
+}
