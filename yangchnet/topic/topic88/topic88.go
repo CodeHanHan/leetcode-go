@@ -24,3 +24,18 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 
 	copy(nums1, tmp)
 }
+
+func merge1(nums1 []int, m int, nums2 []int, n int) {
+	p, q := m-1, n-1
+	v := m + n - 1
+	for q >= 0 {
+		if p < 0 || nums1[p] <= nums2[q] {
+			nums1[v] = nums2[q]
+			q--
+		} else {
+			nums1[v] = nums1[p]
+			p--
+		}
+		v--
+	}
+}
