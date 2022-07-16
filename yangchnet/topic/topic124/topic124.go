@@ -24,9 +24,13 @@ func maxPathSum(root *TreeNode) int {
 	return maxSum
 }
 
-func max(a, b int) int {
-	if a >= b {
-		return a
+func max(nums ...int) int {
+	ret := nums[0]
+	for _, v := range nums {
+		if ret < v {
+			ret = v
+		}
 	}
-	return b
+
+	return ret
 }
