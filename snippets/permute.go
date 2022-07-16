@@ -76,3 +76,36 @@ func permuteUnique(nums []int) (ans [][]int) {
 
 	return ans
 }
+
+func permuteUnique1(nums []int) [][]int {
+	ans := make([][]int, 0)
+	if len(nums) <= 0 {
+		return [][]int{}
+	}
+
+	var fn func(idx int)
+	fn = func(idx int) {
+		if idx >= len(nums) {
+			ans = append(ans, append([]int(nil), nums...))
+			return
+		}
+
+		used := make(map[int]bool)
+		for i := idx; i < len(nums); i++ {
+
+			if _, ok := used[nums[i]]; ok {
+				continue
+			}
+
+			used[nums[i]] = true
+			nums[idx], nums[i] = nums[i], nums[idx]
+			fn(idx + 1)
+			nums[idx], nums[i] = nums[i], nums[idx]
+		}
+	}
+
+	fn(0)
+
+	return ans
+
+}
