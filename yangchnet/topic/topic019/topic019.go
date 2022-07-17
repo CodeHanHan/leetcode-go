@@ -24,3 +24,29 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 
 	return pre.Next
 }
+
+func removeNthFromEnd1(head *ListNode, n int) *ListNode {
+	k := 1
+
+	_head := &ListNode{Next: head}
+
+	var fn func(node, pre *ListNode)
+	fn = func(node, pre *ListNode) {
+		if node == nil {
+			return
+		}
+
+		fn(node.Next, node)
+
+		if k == n {
+			pre.Next = node.Next
+			k = -1
+			return
+		}
+		k++
+	}
+
+	fn(head, _head)
+
+	return _head.Next
+}
