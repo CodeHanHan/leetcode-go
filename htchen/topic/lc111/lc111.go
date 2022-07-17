@@ -1,24 +1,10 @@
-package lc104
+package lc111
 
 import (
 	. "github.com/CodeHanHan/leetcode-go/base/Tree"
 )
 
-func maxDepth(root *TreeNode) int {
-	if root == nil {
-		return 0
-	}
-	return max(maxDepth(root.Left), maxDepth(root.Right)) + 1
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
-func maxDepth1(root *TreeNode) int {
+func minDepth(root *TreeNode) int {
 	res := 0
 	if root == nil {
 		return 0
@@ -29,6 +15,9 @@ func maxDepth1(root *TreeNode) int {
 		p := []*TreeNode{}
 		for i := 0; i < len(q); i++ {
 			node := q[i]
+			if node.Left == nil && node.Right == nil {
+				return res
+			}
 			if node.Left != nil {
 				p = append(p, node.Left)
 			}
