@@ -7,7 +7,7 @@ import (
 )
 
 func Test_removeNthFromEnd(t *testing.T) {
-	require.Equal(t, BuildListWithNoHead([]int{1, 2, 3, 5}), removeNthFromEnd(BuildListWithNoHead([]int{1, 2, 3, 4, 5}), 2))
+	require.Equal(t, BuildListWithNoHead([]int{1, 2, 3, 5}), removeNthFromEnd1(BuildListWithNoHead([]int{1, 2, 3, 4, 5}), 2))
 
 	require.Equal(t, BuildListWithNoHead([]int{}), removeNthFromEnd(BuildListWithNoHead([]int{1}), 1))
 
