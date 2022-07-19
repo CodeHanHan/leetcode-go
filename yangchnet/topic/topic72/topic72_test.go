@@ -17,6 +17,3 @@ func Test_minDistance(t *testing.T) {
 
 	require.Equal(t, 2, minDistance("ab", "abbb"))
 }
-
-// "zoologicoarchaeologist"
-// "zoogeologist"
