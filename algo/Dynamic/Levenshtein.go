@@ -18,6 +18,8 @@ min(min_edist(i-1,j)+1, min_edist(i,j-1)+1，min_edist(i-1,j-1))
 其中，min表示求三数中的最小值。
 */
 
+// 只在在字符串末尾做编辑，代替任何位置的编辑，简化问题
+
 func LevenshteinDist(str1, str2 string) int {
 	dp := make([][]int, len(str1))
 	for i := range dp {
