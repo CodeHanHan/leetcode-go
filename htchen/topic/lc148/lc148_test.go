@@ -14,3 +14,10 @@ func Test_sortList(t *testing.T) {
 	require.Equal(t, BuildListWithNoHead([]int{-1, 0, 3, 4, 5}),
 		sortList(BuildListWithNoHead([]int{-1, 5, 3, 4, 0})))
 }
+func Test_sortList1(t *testing.T) {
+	require.Equal(t, BuildListWithNoHead([]int{1, 2, 3, 4}),
+		sortList1(BuildListWithNoHead([]int{4, 2, 1, 3})))
+
+	require.Equal(t, BuildListWithNoHead([]int{-1, 0, 3, 4, 5}),
+		sortList1(BuildListWithNoHead([]int{-1, 5, 3, 4, 0})))
+}
