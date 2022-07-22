@@ -26,8 +26,47 @@ func maximalSquare(matrix [][]byte) int {
 	return maxSize * maxSize
 }
 
+func maximalSquare1(matrix [][]byte) int {
+	maxSide := 0
+	if len(matrix) == 0 || len(matrix[0]) == 0 {
+		return maxSide
+	}
+	for i := 0; i < len(matrix); i++ {
+		for j := 0; j < len(matrix[0]); j++ {
+			if matrix[i][j] == '1' {
+				maxSide = max(maxSide, 1)
+				curMaxSide := min(len(matrix)-i, len(matrix[0])-j)
+				for k := 1; k < curMaxSide; k++ {
+					flag := true
+					if matrix[i+k][j+k] == '0' {
+						break
+					}
+					for n := 0; n < k; n++ {
+						if matrix[i+k][j+n] == '0' || matrix[i+n][j+k] == '0' {
+							flag = false
+						}
+					}
+					if flag {
+						maxSide = max(maxSide, k+1)
+					} else {
+						break
+					}
+				}
+			}
+		}
+	}
+	return maxSide * maxSide
+}
+
 func min(x, y int) int {
 	if x < y {
+		return x
+	}
+	return y
+}
+
+func max(x, y int) int {
+	if x > y {
 		return x
 	}
 	return y
