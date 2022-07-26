@@ -1,0 +1,15 @@
+package topic415
+
+import (
+	"testing"
+
+	"github.com/stretchr/testify/require"
+)
+
+func Test_addStrings(t *testing.T) {
+	require.Equal(t, "134", addStrings("11", "123"))
+
+	require.Equal(t, "533", addStrings("456", "77"))
+
+	require.Equal(t, "1", addStrings("1", "0"))
+}

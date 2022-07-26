@@ -186,3 +186,48 @@ func (l *ListNode) String() string {
 	ret.WriteString("nil")
 	return ret.String()
 }
+
+func MergeKLists(lists []*ListNode) *ListNode {
+	return mergeKLists(lists, 0, len(lists)-1)
+}
+
+func mergeKLists(lists []*ListNode, l, r int) *ListNode {
+	if l == r {
+		return lists[l]
+	}
+
+	if l > r {
+		return nil
+	}
+
+	mid := (l + r) >> 1
+	return mergeTwoLists(mergeKLists(lists, l, mid), mergeKLists(lists, mid+1, r))
+}
+
+func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+	head := &ListNode{
+		Val:  -1,
+		Next: nil,
+	}
+	cur := head
+	for l1 != nil && l2 != nil {
+		if l1.Val < l2.Val {
+			cur.Next = l1
+			cur = l1
+			l1 = l1.Next
+		} else {
+			cur.Next = l2
+			cur = l2
+			l2 = l2.Next
+		}
+	}
+
+	if l1 != nil {
+		cur.Next = l1
+	}
+	if l2 != nil {
+		cur.Next = l2
+	}
+
+	return head.Next
+}
