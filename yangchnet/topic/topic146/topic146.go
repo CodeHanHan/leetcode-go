@@ -1,7 +1,5 @@
 package topic146
 
-import "math"
-
 // type ListNode struct {
 // 	Key  int
 // 	Val  int
@@ -97,88 +95,90 @@ import "math"
 // 	return node
 // }
 
-type LRUCache struct {
-	head, tail       *ListNode
-	items            map[int]*ListNode
-	length, capacity int
-}
+// --------------------------------------------
 
-type ListNode struct {
-	Key  int
-	Val  int
-	Next *ListNode
-	Pre  *ListNode
-}
+// type LRUCache struct {
+// 	head, tail       *ListNode
+// 	items            map[int]*ListNode
+// 	length, capacity int
+// }
 
-func Constructor(capacity int) LRUCache {
-	head := &ListNode{
-		Key: math.MinInt32,
-		Val: math.MinInt32,
-		Pre: nil,
-	}
+// type ListNode struct {
+// 	Key  int
+// 	Val  int
+// 	Next *ListNode
+// 	Pre  *ListNode
+// }
 
-	tail := &ListNode{
-		Key:  math.MaxInt32,
-		Val:  math.MaxInt32,
-		Next: nil,
-	}
+// func Constructor(capacity int) LRUCache {
+// 	head := &ListNode{
+// 		Key: math.MinInt32,
+// 		Val: math.MinInt32,
+// 		Pre: nil,
+// 	}
 
-	head.Next = tail
-	tail.Pre = head
+// 	tail := &ListNode{
+// 		Key:  math.MaxInt32,
+// 		Val:  math.MaxInt32,
+// 		Next: nil,
+// 	}
 
-	return LRUCache{
-		head:     head,
-		tail:     tail,
-		items:    make(map[int]*ListNode),
-		length:   0,
-		capacity: capacity,
-	}
-}
+// 	head.Next = tail
+// 	tail.Pre = head
 
-func (this *LRUCache) Get(key int) int {
-	if node, ok := this.items[key]; !ok {
-		return -1
-	} else {
-		HeadInsert(this.head, CutNode(node))
-		return node.Val
-	}
-}
+// 	return LRUCache{
+// 		head:     head,
+// 		tail:     tail,
+// 		items:    make(map[int]*ListNode),
+// 		length:   0,
+// 		capacity: capacity,
+// 	}
+// }
 
-func (this *LRUCache) Put(key int, value int) {
-	// key 已存在
-	if node, ok := this.items[key]; ok {
-		node.Val = value
-		HeadInsert(this.head, CutNode(node))
-		return
-	}
+// func (this *LRUCache) Get(key int) int {
+// 	if node, ok := this.items[key]; !ok {
+// 		return -1
+// 	} else {
+// 		HeadInsert(this.head, CutNode(node))
+// 		return node.Val
+// 	}
+// }
 
-	if this.length >= this.capacity {
-		delete(this.items, CutNode(this.tail.Pre).Val)
-		this.length--
-	}
+// func (this *LRUCache) Put(key int, value int) {
+// 	// key 已存在
+// 	if node, ok := this.items[key]; ok {
+// 		node.Val = value
+// 		HeadInsert(this.head, CutNode(node))
+// 		return
+// 	}
 
-	newNode := &ListNode{
-		Key: key,
-		Val: value,
-	}
+// 	if this.length >= this.capacity {
+// 		delete(this.items, CutNode(this.tail.Pre).Val)
+// 		this.length--
+// 	}
 
-	HeadInsert(this.head, newNode)
-	this.items[key] = newNode
+// 	newNode := &ListNode{
+// 		Key: key,
+// 		Val: value,
+// 	}
 
-	this.length++
-}
+// 	HeadInsert(this.head, newNode)
+// 	this.items[key] = newNode
 
-func HeadInsert(head, node *ListNode) {
-	node.Next = head.Next
-	node.Pre = head
+// 	this.length++
+// }
 
-	head.Next = node
-	node.Next.Pre = node
-}
+// func HeadInsert(head, node *ListNode) {
+// 	node.Next = head.Next
+// 	node.Pre = head
 
-func CutNode(node *ListNode) *ListNode {
-	node.Pre.Next = node.Next
-	node.Next.Pre = node.Pre
+// 	head.Next = node
+// 	node.Next.Pre = node
+// }
 
-	return node
-}
+// func CutNode(node *ListNode) *ListNode {
+// 	node.Pre.Next = node.Next
+// 	node.Next.Pre = node.Pre
+
+// 	return node
+// }
