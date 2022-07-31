@@ -40,3 +40,30 @@ func minWindow(s string, t string) string {
 	}
 	return s[ansL:ansR]
 }
+
+func minWindow1(s string, t string) string {
+	// 存储s和t中字符的出现次数
+	hs, ht := make(map[byte]int), make(map[byte]int)
+
+	// 记录t中字符出现次数
+	for i, _ := range t {
+		ht[t[i]]++
+	}
+
+	var res string
+	for i, j, cnt := 0, 0, 0; i < len(s); i++ {
+		hs[s[i]]++
+		if hs[s[i]] <= ht[s[i]] { // 记录已经出现的有效字符
+			cnt++
+		}
+		for j < len(s) && hs[s[j]] > ht[s[j]] { // s[j]变成多余的了
+			hs[s[j]]--
+			j++
+		}
+		if cnt == len(t) && (res == "" || i-j+1 < len(res)) {
+			res = s[j : i+1]
+		}
+	}
+
+	return res
+}
