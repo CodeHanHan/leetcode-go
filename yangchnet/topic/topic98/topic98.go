@@ -1,6 +1,8 @@
 package topic98
 
 import (
+	"math"
+
 	. "github.com/CodeHanHan/leetcode-go/base/Tree"
 )
 
@@ -37,4 +39,18 @@ func isValidBST(root *TreeNode) bool {
 	}
 
 	return true
+}
+
+func isValidBST1(root *TreeNode) bool {
+	return helper(root, math.MinInt64, math.MaxInt64)
+}
+
+func helper(root *TreeNode, lower, upper int) bool {
+	if root == nil {
+		return true
+	}
+	if root.Val <= lower || root.Val >= upper {
+		return false
+	}
+	return helper(root.Left, lower, root.Val) && helper(root.Right, root.Val, upper)
 }
