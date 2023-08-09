@@ -11,5 +11,7 @@ func Test_inorderTraversal(t *testing.T) {
 	var tree *TreeNode
 
 	tree = BuildTree([]int{3, 4, 1, 2, 5}, []int{1, 4, 2, 3, 5})
+
 	require.Equal(t, []int{1, 4, 2, 3, 5}, inorderTraversal(tree))
+	require.Equal(t, []int{1, 4, 2, 3, 5}, inorderTraversal_1(tree))
 }
